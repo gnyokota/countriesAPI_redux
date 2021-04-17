@@ -56,9 +56,7 @@ function TableContent() {
             </TableCell>
 
             <TableCell align="center">
-              <Link
-                to={`/countries/${item.alpha2Code}`}
-              >{`More details: ${item.name}`}</Link>
+              <Link to={`/countries/${item.alpha2Code}`}>{item.name}</Link>
             </TableCell>
 
             <TableCell align="center">

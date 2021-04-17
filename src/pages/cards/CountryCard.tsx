@@ -1,5 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
+import { FetchState, Countries } from '../../redux/types/fetchData'
+
 import {
   Grid,
   makeStyles,
@@ -27,6 +30,10 @@ const useStyles = makeStyles({
     height: '80px',
     margin: '1rem auto',
   },
+  img: {
+    width: '120px',
+    height: 'auto',
+  },
   name: {
     align: 'center',
     marginBottom: '1rem',
@@ -50,6 +57,10 @@ type Alpha = {
   alpha: string
 }
 
+type State = {
+  data: FetchState
+}
+
 function CountryCard() {
   //use params from the url path:name
   const { alpha } = useParams<Alpha>()
@@ -57,46 +68,66 @@ function CountryCard() {
   const history = useHistory()
   //history will avoid rendering the parent page when I go from children to parent
   const handleClick = () => {
-    history.push('/')
+    history.goBack()
   }
 
   const classes = useStyles()
+
+  const { countries } = useSelector((state: State) => state.data)
+
+  const alphaCountry = countries.filter((country: Countries) => {
+    return country.alpha2Code
+      ?.toLowerCase()
+      .includes(alpha.toLowerCase().trim())
+  })
+
   return (
     <div>
-      <Typography variant="h3" align="center" className={classes.title}>
-        {alpha}
-      </Typography>
-      {/* wrapper */}
+      {alphaCountry.map((item) => (
+        <div key={item.alpha2Code}>
+          <Typography variant="h3" align="center" className={classes.title}>
+            {item.name}
+          </Typography>
+          <Box
+            boxShadow={2}
+            component={Grid}
+            justifyContent="space-between"
+            alignItems="center"
+            className={classes.card}
+          >
+            {/* avatar with the flag*/}
+            <Avatar className={classes.avatar}>
+              <img
+                className={classes.img}
+                src={item.flag}
+                alt="countrie-flag"
+              />
+            </Avatar>
 
-      {/* {data.map((user) => ( */}
-      <Box
-        boxShadow={2}
-        component={Grid}
-        justifyContent="space-between"
-        alignItems="center"
-        className={classes.card}
-      >
-        {/* avatar with the initial */}
-        <Avatar className={classes.avatar}>Image Flag</Avatar>
-
-        {/* name */}
-        <Typography variant="h5" align="center" className={classes.name}>
-          name
-        </Typography>
-        {/* Region */}
-        <Typography variant="caption" className={classes.details}>
-          Region
-        </Typography>
-        {/* link and button  */}
-        <Button
-          variant="contained"
-          className={classes.button}
-          startIcon={<ArrowBackIosIcon onClick={handleClick} />}
-        >
-          BACK TO LIST
-        </Button>
-      </Box>
-      {/* ))} */}
+            {/* name */}
+            <Typography variant="h5" align="center" className={classes.name}>
+              {item.name}
+            </Typography>
+            {/* Region */}
+            <Typography variant="caption" className={classes.details}>
+              {item.region}
+            </Typography>
+            {/* Region */}
+            <Typography variant="caption" className={classes.details}>
+              {item.nativeName}
+            </Typography>
+            {/* link and button  */}
+            <Button
+              variant="contained"
+              className={classes.button}
+              startIcon={<ArrowBackIosIcon />}
+              onClick={handleClick}
+            >
+              BACK TO LIST
+            </Button>
+          </Box>
+        </div>
+      ))}
     </div>
   )
 }

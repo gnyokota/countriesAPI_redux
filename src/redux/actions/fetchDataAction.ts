@@ -53,7 +53,6 @@ export const fetchData = () => async (dispatch: Dispatch) => {
     dispatch(fetchPending())
     const response = await fetch('https://restcountries.eu/rest/v2/all')
     const data = await response.json()
-    // console.log(data)
     dispatch(fetchSuccess(data))
     dispatch(fetchFilteredData(data))
   } catch (error) {
