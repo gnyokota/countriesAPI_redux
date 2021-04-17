@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { FetchState } from '../../../redux/types/fetchData'
 import { fetchData } from '../../../redux/actions/fetchDataAction'
@@ -35,13 +36,11 @@ function TableContent() {
 
   useEffect(() => {
     dispatch(fetchData())
-  }, [])
+  }, [dispatch])
 
   const { filteredCountries, pending } = useSelector(
     (state: State) => state.data
   )
-
-  console.log(filteredCountries, pending)
 
   return (
     <>
@@ -55,12 +54,19 @@ function TableContent() {
                 alt="countrie-flag"
               />
             </TableCell>
-            <TableCell align="center">{item.name}</TableCell>
+
+            <TableCell align="center">
+              <Link
+                to={`/countries/${item.alpha2Code}`}
+              >{`More details: ${item.name}`}</Link>
+            </TableCell>
+
             <TableCell align="center">
               {item.languages?.map((language) => (
                 <li key={language.iso639_1}>{language.name}</li>
               ))}
             </TableCell>
+
             <TableCell align="center">{item.population}</TableCell>
             <TableCell align="center">{item.region}</TableCell>
             <TableCell align="center">
