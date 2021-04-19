@@ -21,13 +21,13 @@ const useStyles = makeStyles({
   card: {
     padding: '2rem 0.5rem',
     borderRadius: '8px',
-    maxWidth: 250,
+    maxWidth: 300,
     margin: '1rem auto',
     textAlign: 'center',
   },
   avatar: {
     width: '80px',
-    height: '80px',
+    height: 'auto',
     margin: '1rem auto',
   },
   img: {
@@ -43,6 +43,9 @@ const useStyles = makeStyles({
     display: 'block',
     margin: '0.5rem auto',
     width: '100%',
+  },
+  span: {
+    fontSize: '0.8rem',
   },
   link: {
     textDecoration: 'none',
@@ -85,7 +88,12 @@ function CountryCard() {
     <div>
       {alphaCountry.map((item) => (
         <div key={item.alpha2Code}>
-          <Typography variant="h3" align="center" className={classes.title}>
+          <Typography
+            variant="h3"
+            align="center"
+            color="primary"
+            className={classes.title}
+          >
             {item.name}
           </Typography>
           <Box
@@ -96,7 +104,7 @@ function CountryCard() {
             className={classes.card}
           >
             {/* avatar with the flag*/}
-            <Avatar className={classes.avatar}>
+            <Avatar variant="square" className={classes.avatar}>
               <img
                 className={classes.img}
                 src={item.flag}
@@ -110,15 +118,23 @@ function CountryCard() {
             </Typography>
             {/* Region */}
             <Typography variant="caption" className={classes.details}>
+              <span className={classes.span}>Region: </span>
               {item.region}
             </Typography>
             {/* Region */}
             <Typography variant="caption" className={classes.details}>
+              <span className={classes.span}>Native name: </span>
               {item.nativeName}
+            </Typography>
+            {/* Population */}
+            <Typography variant="caption" className={classes.details}>
+              <span className={classes.span}>Population (million): </span>
+              {(item.population / 1000000).toFixed(3)}
             </Typography>
             {/* link and button  */}
             <Button
               variant="contained"
+              color="primary"
               className={classes.button}
               startIcon={<ArrowBackIosIcon />}
               onClick={handleClick}

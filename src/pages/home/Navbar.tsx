@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { FetchState } from '../../redux/types/fetchData'
 import { handleSearchChange } from '../../redux/actions/fetchDataAction'
+import { toogleCart } from '../../redux/actions/cartActions'
+import { toogleTheme } from '../../redux/actions/themeActions'
 
 import { fade, createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import {
@@ -20,6 +22,9 @@ import SearchIcon from '@material-ui/icons/Search'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      position: 'fixed',
+    },
+    space: {
       flexGrow: 1,
     },
     menuButton: {
@@ -36,6 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginLeft: theme.spacing(2),
     },
     search: {
+      flexGrow: 1,
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
       backgroundColor: fade(theme.palette.common.white, 0.15),
@@ -49,7 +55,6 @@ const useStyles = makeStyles((theme: Theme) =>
         marginLeft: theme.spacing(3),
         width: 'auto',
       },
-      flexGrow: 1,
     },
     searchIcon: {
       padding: theme.spacing(0, 2),
@@ -89,49 +94,49 @@ function Navbar() {
   const dispatch = useDispatch()
 
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Countries API
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              onChange={(e) => dispatch(handleSearchChange(e.target.value))}
-              value={searchField}
-            />
+    <AppBar className={classes.root}>
+      <Toolbar>
+        <IconButton
+          edge="start"
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="menu"
+          onClick={() => dispatch(toogleTheme(true))}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" className={classes.title}>
+          Countries API
+        </Typography>
+        <div className={classes.search}>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
           </div>
-          <div className={classes.root} />
-          <div className={classes.root} />
-          <div className={classes.root} />
-          <IconButton
-            aria-label="show new countries"
-            className={classes.cartButton}
-            color="inherit"
-          >
-            <Badge badgeContent={4} color="secondary">
-              <ShoppingCartIcon />
-            </Badge>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    </div>
+          <InputBase
+            placeholder="Search…"
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            onChange={(e) => dispatch(handleSearchChange(e.target.value))}
+            value={searchField}
+          />
+        </div>
+        <div className={classes.space} />
+        <div className={classes.space} />
+        <div className={classes.space} />
+        <IconButton
+          aria-label="show new countries"
+          className={classes.cartButton}
+          color="inherit"
+          onClick={() => dispatch(toogleCart(true))}
+        >
+          <Badge badgeContent={4} color="secondary">
+            <ShoppingCartIcon />
+          </Badge>
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   )
 }
 
