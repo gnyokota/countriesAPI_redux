@@ -75,3 +75,18 @@ export type HandleSearchChange = {
   type: typeof HANDLE_SEARCH_CHANGE
   payload: string
 }
+
+export type AppState = {
+  data: {
+    pending: boolean
+    countries: Countries[]
+    error: Error | null
+    searchField: string
+    filteredCountries: Countries[]
+    open: boolean
+    inCart: Countries[]
+  }
+  theme: {
+    openTheme: boolean
+  }
+}
