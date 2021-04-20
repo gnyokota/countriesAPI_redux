@@ -1,7 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { toogleCart } from '../../../redux/actions/fetchCartAction'
+import {
+  toogleCart,
+  removeFromCart,
+} from '../../../redux/actions/fetchCartAction'
 import { FetchState } from '../../../redux/types/fetchCart'
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
@@ -29,6 +32,9 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 400,
       marginTop: 64,
     },
+    paper: {
+      minHeight: '100vh',
+    },
     img: {
       height: '30px',
       width: 'auto',
@@ -55,7 +61,7 @@ function CartDrawer() {
       open={open}
       onClose={() => dispatch(toogleCart(false))}
     >
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className={classes.paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -78,7 +84,13 @@ function CartDrawer() {
                 <TableCell align="center">{country.name}</TableCell>
                 <TableCell align="center">{country.qty}</TableCell>
                 <TableCell align="center">
-                  <IconButton aria-label="show new countries" color="inherit">
+                  <IconButton
+                    aria-label="show new countries"
+                    color="inherit"
+                    onClick={() =>
+                      dispatch(removeFromCart(country.alpha2Code as string))
+                    }
+                  >
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>

@@ -12,12 +12,15 @@ const useStyles = makeStyles({
     margin: '4rem auto',
     width: '90%',
   },
+  paper: {
+    minHeight: '100vh',
+  },
 })
 
 function MainTable() {
   const classes = useStyles()
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className={classes.paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHeader />
         <TableBody>

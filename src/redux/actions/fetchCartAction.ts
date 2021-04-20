@@ -2,6 +2,7 @@ import { Dispatch } from 'redux'
 import {
   ADD_TO_CART,
   TOGGLE_CART,
+  REMOVE_FROM_CART,
   FETCH_COUNTRIES_PENDING,
   FETCH_COUNTRIES_SUCCESS,
   FETCH_COUNTRIES_ERROR,
@@ -9,6 +10,7 @@ import {
   HANDLE_SEARCH_CHANGE,
   ToggleCart,
   AddToCart,
+  RemoveFromCart,
   FetchPending,
   FetchSuccess,
   FetchError,
@@ -28,6 +30,13 @@ export const addToCart = (country: Countries): AddToCart => {
   return {
     type: ADD_TO_CART,
     payload: country,
+  }
+}
+
+export const removeFromCart = (alphaCode: string): RemoveFromCart => {
+  return {
+    type: REMOVE_FROM_CART,
+    payload: alphaCode,
   }
 }
 

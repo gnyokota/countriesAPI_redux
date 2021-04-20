@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 320,
       marginTop: 64,
     },
+    paper: {
+      minHeight: '100vh',
+    },
   })
 )
 
@@ -47,7 +50,7 @@ function ThemeDrawer() {
       open={openTheme}
       onClose={() => dispatch(toogleTheme(false))}
     >
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className={classes.paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>

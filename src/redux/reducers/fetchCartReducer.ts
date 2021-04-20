@@ -1,6 +1,7 @@
 import {
   ToggleCart,
   AddToCart,
+  RemoveFromCart,
   FetchState,
   FetchPending,
   FetchSuccess,
@@ -9,6 +10,7 @@ import {
   HandleSearchChange,
   TOGGLE_CART,
   ADD_TO_CART,
+  REMOVE_FROM_CART,
   HANDLE_SEARCH_CHANGE,
   FETCH_COUNTRIES_PENDING,
   FETCH_COUNTRIES_SUCCESS,
@@ -32,6 +34,7 @@ const fetchReducer = (
   action:
     | ToggleCart
     | AddToCart
+    | RemoveFromCart
     | FetchPending
     | FetchSuccess
     | FetchError
@@ -60,6 +63,13 @@ const fetchReducer = (
             ? { ...country, qty: +((country.qty as number) + 1) }
             : { ...country, qty: 1 }
         ),
+    }
+  case REMOVE_FROM_CART:
+    return {
+      ...state,
+      inCart: state.inCart.filter(
+        (country) => country.alpha2Code !== action.payload
+      ),
     }
   case FETCH_COUNTRIES_PENDING:
     return {

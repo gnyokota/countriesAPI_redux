@@ -1,10 +1,11 @@
+export const TOGGLE_CART = 'TOOGLE_CART'
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const FETCH_COUNTRIES_PENDING = 'FETCH_COUNTRIES_PENDING'
 export const FETCH_COUNTRIES_SUCCESS = 'FETCH_COUNTRIES_SUCESS'
 export const FETCH_COUNTRIES_ERROR = 'FETCH_COUNTRIES_ERROR'
 export const FETCH_FILTERED_COUNTRIES = 'FETCH_FILTERED_COUNTRIES'
 export const HANDLE_SEARCH_CHANGE = 'HANDLE_SEARCH_CHANGE'
-export const TOGGLE_CART = 'TOOGLE_CART'
-export const ADD_TO_CART = 'ADD_TO_CART'
 
 export type Languages = {
   iso639_1: string
@@ -33,6 +34,11 @@ export type ToggleCart = {
 export type AddToCart = {
   type: typeof ADD_TO_CART
   payload: Countries
+}
+
+export type RemoveFromCart = {
+  type: typeof REMOVE_FROM_CART
+  payload: string
 }
 
 //Fetch actions
