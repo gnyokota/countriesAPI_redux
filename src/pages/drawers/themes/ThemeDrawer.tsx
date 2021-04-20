@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { ThemeState } from '../../../redux/types/drawers'
+import { ThemeState } from '../../../redux/types/drawersCartTheme'
 import { toogleTheme } from '../../../redux/actions/themeActions'
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'

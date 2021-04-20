@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { FetchState } from '../../../redux/types/fetchData'
-import { fetchData } from '../../../redux/actions/fetchDataAction'
+import { FetchState } from '../../../redux/types/fetchCart'
+import { fetchData, addToCart } from '../../../redux/actions/fetchCartAction'
 
 import {
   TableRow,
@@ -68,7 +68,12 @@ function TableContent() {
             <TableCell align="center">{item.population}</TableCell>
             <TableCell align="center">{item.region}</TableCell>
             <TableCell align="center">
-              <Button size="small" variant="contained" color="primary">
+              <Button
+                size="small"
+                variant="contained"
+                color="primary"
+                onClick={() => dispatch(addToCart(item))}
+              >
                 Add
               </Button>
             </TableCell>

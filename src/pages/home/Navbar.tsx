@@ -1,9 +1,11 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { FetchState } from '../../redux/types/fetchData'
-import { handleSearchChange } from '../../redux/actions/fetchDataAction'
-import { toogleCart } from '../../redux/actions/cartActions'
+import { FetchState } from '../../redux/types/fetchCart'
+import {
+  handleSearchChange,
+  toogleCart,
+} from '../../redux/actions/fetchCartAction'
 import { toogleTheme } from '../../redux/actions/themeActions'
 
 import { fade, createStyles, makeStyles, Theme } from '@material-ui/core/styles'
@@ -89,8 +91,13 @@ type State = {
 function Navbar() {
   const classes = useStyles()
 
-  const { searchField } = useSelector((state: State) => state.data)
+  const { searchField, inCart } = useSelector((state: State) => state.data)
 
+  var totalQty = !inCart.length
+    ? 0
+    : inCart.reduce((accum, item) => (accum + item.qty) as number, 0)
+
+  console.log(inCart.length)
   const dispatch = useDispatch()
 
   return (
@@ -131,7 +138,7 @@ function Navbar() {
           color="inherit"
           onClick={() => dispatch(toogleCart(true))}
         >
-          <Badge badgeContent={4} color="secondary">
+          <Badge badgeContent={totalQty} color="secondary">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>

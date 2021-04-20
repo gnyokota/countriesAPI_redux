@@ -3,6 +3,8 @@ export const FETCH_COUNTRIES_SUCCESS = 'FETCH_COUNTRIES_SUCESS'
 export const FETCH_COUNTRIES_ERROR = 'FETCH_COUNTRIES_ERROR'
 export const FETCH_FILTERED_COUNTRIES = 'FETCH_FILTERED_COUNTRIES'
 export const HANDLE_SEARCH_CHANGE = 'HANDLE_SEARCH_CHANGE'
+export const TOGGLE_CART = 'TOOGLE_CART'
+export const ADD_TO_CART = 'ADD_TO_CART'
 
 export type Languages = {
   iso639_1: string
@@ -17,8 +19,23 @@ export interface Countries {
   population: number
   languages: Languages[]
   region: string
+  qty?: number
 }
 
+//cart actions
+//toggle cart drawer
+export type ToggleCart = {
+  type: typeof TOGGLE_CART
+  payload: boolean
+}
+
+//Add countries to cart
+export type AddToCart = {
+  type: typeof ADD_TO_CART
+  payload: Countries
+}
+
+//Fetch actions
 export type FetchPending = {
   type: typeof FETCH_COUNTRIES_PENDING
 }
@@ -44,6 +61,8 @@ export type FetchState = {
   error: Error | null
   searchField: string
   filteredCountries: Countries[]
+  open: boolean
+  inCart: Countries[]
 }
 
 export type HandleSearchChange = {

@@ -1,4 +1,8 @@
-import { TOGGLE_THEME, ToggleTheme, ThemeState } from '../types/drawers'
+import {
+  TOGGLE_THEME,
+  ToggleTheme,
+  ThemeState,
+} from '../types/drawersCartTheme'
 
 const initialState: ThemeState = {
   openTheme: false,

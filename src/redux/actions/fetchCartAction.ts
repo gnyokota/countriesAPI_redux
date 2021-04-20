@@ -1,17 +1,35 @@
 import { Dispatch } from 'redux'
 import {
+  ADD_TO_CART,
+  TOGGLE_CART,
   FETCH_COUNTRIES_PENDING,
   FETCH_COUNTRIES_SUCCESS,
   FETCH_COUNTRIES_ERROR,
   FETCH_FILTERED_COUNTRIES,
   HANDLE_SEARCH_CHANGE,
+  ToggleCart,
+  AddToCart,
   FetchPending,
   FetchSuccess,
   FetchError,
   FetchFiltered,
   HandleSearchChange,
   Countries,
-} from '../types/fetchData'
+} from '../types/fetchCart'
+
+export const toogleCart = (booleanState: boolean): ToggleCart => {
+  return {
+    type: TOGGLE_CART,
+    payload: booleanState,
+  }
+}
+
+export const addToCart = (country: Countries): AddToCart => {
+  return {
+    type: ADD_TO_CART,
+    payload: country,
+  }
+}
 
 export const fetchPending = (): FetchPending => {
   return {

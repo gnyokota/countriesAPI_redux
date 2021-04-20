@@ -1,4 +1,4 @@
-import { ToggleTheme, TOGGLE_THEME } from '../types/drawers'
+import { ToggleTheme, TOGGLE_THEME } from '../types/drawersCartTheme'
 
 export const toogleTheme = (booleanState: boolean): ToggleTheme => {
   return {
