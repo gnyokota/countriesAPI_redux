@@ -91,4 +91,7 @@ function TableContent() {
   )
 }
 
-export default TableContent
+// React renders the component and memoizes the result.
+// Before the next render, if the new props are the same,
+// React reuses the memoized result skipping the next rendering
+export default React.memo(TableContent)

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { ThemeState } from '../../../redux/types/drawersCartTheme'
+import { ThemeState } from '../../../redux/types/themes'
 import { toogleTheme } from '../../../redux/actions/themeActions'
 import { ThemeContext } from './ThemeProvider'
 

@@ -1,3 +1,5 @@
+import { ThemeState } from './themes'
+
 export const TOGGLE_CART = 'TOOGLE_CART'
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
@@ -77,16 +79,6 @@ export type HandleSearchChange = {
 }
 
 export type AppState = {
-  data: {
-    pending: boolean
-    countries: Countries[]
-    error: Error | null
-    searchField: string
-    filteredCountries: Countries[]
-    open: boolean
-    inCart: Countries[]
-  }
-  theme: {
-    openTheme: boolean
-  }
+  data: FetchState
+  theme: ThemeState
 }

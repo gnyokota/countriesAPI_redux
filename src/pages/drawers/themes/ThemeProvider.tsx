@@ -43,7 +43,11 @@ const tealTheme = createMuiTheme({
   },
 })
 
-const themes: { [key: string]: Theme } = {
+type Themes = {
+  [key: string]: Theme
+}
+
+const themes: Themes = {
   blueTheme,
   orangeTheme,
   redTheme,
