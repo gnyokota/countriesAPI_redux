@@ -20,6 +20,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import SearchIcon from '@material-ui/icons/Search'
+import PublicIcon from '@material-ui/icons/Public'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -36,8 +37,12 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       display: 'none',
       [theme.breakpoints.up('sm')]: {
-        display: 'block',
+        display: 'flex',
+        alignItems: 'center',
       },
+    },
+    titleIcon: {
+      margin: '0.5rem',
     },
     cartButton: {
       marginLeft: theme.spacing(2),
@@ -113,7 +118,7 @@ function Navbar() {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" className={classes.title}>
-          Countries API
+          Countries API <PublicIcon className={classes.titleIcon} />
         </Typography>
         <div className={classes.search}>
           <div className={classes.searchIcon}>

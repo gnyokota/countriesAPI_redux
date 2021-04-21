@@ -78,6 +78,7 @@ export type HandleSearchChange = {
   payload: string
 }
 
+//state of the entire app
 export type AppState = {
   data: FetchState
   theme: ThemeState

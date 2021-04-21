@@ -24,13 +24,20 @@ import {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     table: {
-      maxWidth: 320,
       margin: '0.5rem auto',
-      width: '95%',
+      [theme.breakpoints.up('md')]: {
+        maxWidth: 320,
+        margin: '0.5rem auto',
+        width: '95%',
+      },
     },
     drawerPaper: {
-      width: 400,
-      marginTop: 64,
+      width: '90vw',
+      marginTop: 55,
+      [theme.breakpoints.up('md')]: {
+        width: 400,
+        marginTop: 64,
+      },
     },
     paper: {
       minHeight: '100vh',

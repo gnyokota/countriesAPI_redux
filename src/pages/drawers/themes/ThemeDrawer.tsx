@@ -5,7 +5,7 @@ import { ThemeState } from '../../../redux/types/themes'
 import { toogleTheme } from '../../../redux/actions/themeActions'
 import { ThemeContext } from './ThemeProvider'
 
-import { makeStyles, createStyles } from '@material-ui/core/styles'
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import {
   Drawer,
   Table,
@@ -20,16 +20,23 @@ import {
 } from '@material-ui/core'
 import { indigo, orange, red, purple, teal } from '@material-ui/core/colors'
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     table: {
-      maxWidth: 220,
       margin: '0.5rem auto',
-      width: '95%',
+      [theme.breakpoints.up('md')]: {
+        maxWidth: 220,
+        margin: '0.5rem auto',
+        width: '95%',
+      },
     },
     drawerPaper: {
-      width: 250,
-      marginTop: 64,
+      width: '80vw',
+      marginTop: 55,
+      [theme.breakpoints.up('md')]: {
+        width: 250,
+        marginTop: 64,
+      },
     },
     button: {
       fontSize: '0.7rem',

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
-import { FetchState, Countries } from '../../redux/types/fetchData'
+import { FetchState, Countries } from '../../redux/types/fetchCart'
 
 import {
   Grid,
@@ -16,6 +16,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 const useStyles = makeStyles({
   title: {
     padding: '1rem',
+    margin: '2rem auto',
     fontWeight: 900,
   },
   card: {
@@ -86,7 +87,7 @@ function CountryCard() {
 
   return (
     <div>
-      {alphaCountry.map((item) => (
+      {alphaCountry.map((item: Countries) => (
         <div key={item.alpha2Code}>
           <Typography
             variant="h3"
