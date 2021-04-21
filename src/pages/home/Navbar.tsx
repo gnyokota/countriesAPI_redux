@@ -102,7 +102,6 @@ function Navbar() {
     ? 0
     : inCart.reduce((accum, item) => accum + (item.qty as number), 0)
 
-  console.log('inCart length', inCart.length)
   const dispatch = useDispatch()
 
   return (

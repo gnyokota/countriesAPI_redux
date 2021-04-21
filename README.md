@@ -1,8 +1,10 @@
 # My Countries API Webpage:
 
-![home page](src\img\homePage.png)
+![home page](src\img\homePage.JPG)
 
-![home page](src\img\homePage2.png)
+![home page](src\img\homePage2.JPG)
+
+![home page](src\img\homePage3.JPG)
 
 ![details page](src\img\detailsPage.JPG)
 
