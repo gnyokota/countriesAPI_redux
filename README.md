@@ -1,12 +1,12 @@
 # My Countries API Webpage:
 
-![home page](src\img\homePage.JPG)
+![home page](https://github.com/gnyokota/fs7-react-redux-typescript/blob/00e0e852fbf1d4ad702b13c2f916910cf82601c8/src/img/homePage.JPG)
 
-![home page](src\img\homePage2.JPG)
+![home page](https://github.com/gnyokota/fs7-react-redux-typescript/blob/00e0e852fbf1d4ad702b13c2f916910cf82601c8/src/img/homePage2.JPG)
 
-![home page](src\img\homePage3.JPG)
+![home page](https://github.com/gnyokota/fs7-react-redux-typescript/blob/00e0e852fbf1d4ad702b13c2f916910cf82601c8/src/img/homePage3.JPG)
 
-![details page](src\img\detailsPage.JPG)
+![details page](https://github.com/gnyokota/fs7-react-redux-typescript/blob/00e0e852fbf1d4ad702b13c2f916910cf82601c8/src/img/detailsPage.JPG)
 
 # Fast Track React app template with TypeScript & Redux
 
