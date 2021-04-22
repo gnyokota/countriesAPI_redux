@@ -63,6 +63,21 @@ export type FetchFiltered = {
   payload: Countries[]
 }
 
+export type HandleSearchChange = {
+  type: typeof HANDLE_SEARCH_CHANGE
+  payload: string
+}
+
+export type AllFetchCartActions =
+  | ToggleCart
+  | AddToCart
+  | RemoveFromCart
+  | FetchPending
+  | FetchSuccess
+  | FetchError
+  | FetchFiltered
+  | HandleSearchChange
+
 export type FetchState = {
   pending: boolean
   countries: Countries[]
@@ -71,11 +86,6 @@ export type FetchState = {
   filteredCountries: Countries[]
   open: boolean
   inCart: Countries[]
-}
-
-export type HandleSearchChange = {
-  type: typeof HANDLE_SEARCH_CHANGE
-  payload: string
 }
 
 //state of the entire app

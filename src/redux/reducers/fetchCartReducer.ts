@@ -1,13 +1,5 @@
 import {
-  ToggleCart,
-  AddToCart,
-  RemoveFromCart,
-  FetchState,
-  FetchPending,
-  FetchSuccess,
-  FetchError,
-  FetchFiltered,
-  HandleSearchChange,
+  AllFetchCartActions,
   TOGGLE_CART,
   ADD_TO_CART,
   REMOVE_FROM_CART,
@@ -17,6 +9,7 @@ import {
   FETCH_COUNTRIES_ERROR,
   FETCH_FILTERED_COUNTRIES,
   Countries,
+  FetchState,
 } from '../types/fetchCart'
 
 const initialState: FetchState = {
@@ -31,15 +24,7 @@ const initialState: FetchState = {
 
 const fetchReducer = (
   state = initialState,
-  action:
-    | ToggleCart
-    | AddToCart
-    | RemoveFromCart
-    | FetchPending
-    | FetchSuccess
-    | FetchError
-    | FetchFiltered
-    | HandleSearchChange
+  action: AllFetchCartActions
 ): FetchState => {
   switch (action.type) {
   case TOGGLE_CART:

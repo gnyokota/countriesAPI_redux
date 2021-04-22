@@ -8,66 +8,61 @@ import {
   FETCH_COUNTRIES_ERROR,
   FETCH_FILTERED_COUNTRIES,
   HANDLE_SEARCH_CHANGE,
-  ToggleCart,
-  AddToCart,
-  RemoveFromCart,
-  FetchPending,
-  FetchSuccess,
-  FetchError,
-  FetchFiltered,
-  HandleSearchChange,
+  AllFetchCartActions,
   Countries,
 } from '../types/fetchCart'
 
-export const toogleCart = (booleanState: boolean): ToggleCart => {
+export const toogleCart = (booleanState: boolean): AllFetchCartActions => {
   return {
     type: TOGGLE_CART,
     payload: booleanState,
   }
 }
 
-export const addToCart = (country: Countries): AddToCart => {
+export const addToCart = (country: Countries): AllFetchCartActions => {
   return {
     type: ADD_TO_CART,
     payload: country,
   }
 }
 
-export const removeFromCart = (alphaCode: string): RemoveFromCart => {
+export const removeFromCart = (alphaCode: string): AllFetchCartActions => {
   return {
     type: REMOVE_FROM_CART,
     payload: alphaCode,
   }
 }
 
-export const fetchPending = (): FetchPending => {
+export const fetchPending = (): AllFetchCartActions => {
   return {
     type: FETCH_COUNTRIES_PENDING,
   }
 }
 
-export const fetchSuccess = (countries: Countries[]): FetchSuccess => {
+export const fetchSuccess = (countries: Countries[]): AllFetchCartActions => {
   return {
     type: FETCH_COUNTRIES_SUCCESS,
     payload: countries,
   }
 }
 
-export const fetchError = (error: Error | null): FetchError => {
+export const fetchError = (error: Error | null): AllFetchCartActions => {
   return {
     type: FETCH_COUNTRIES_ERROR,
     payload: error,
   }
 }
 
-export const fetchFilteredData = (countries: Countries[]): FetchFiltered => {
+export const fetchFilteredData = (
+  countries: Countries[]
+): AllFetchCartActions => {
   return {
     type: FETCH_FILTERED_COUNTRIES,
     payload: countries,
   }
 }
 
-export const handleSearchChange = (value: string): HandleSearchChange => {
+export const handleSearchChange = (value: string): AllFetchCartActions => {
   return {
     type: HANDLE_SEARCH_CHANGE,
     payload: value,
