@@ -73,11 +73,11 @@ export const handleSearchChange = (value: string): AllFetchCartActions => {
 export const fetchData = () => async (dispatch: Dispatch) => {
   try {
     dispatch(fetchPending())
-    const response = await fetch('https://restcountries.eu/rest/v2/all')
+    const response = await fetch('https://restcountries.com/v2/all')
     const data = await response.json()
     dispatch(fetchSuccess(data))
     dispatch(fetchFilteredData(data))
-  } catch (error) {
+  } catch (error: any) {
     dispatch(fetchError(error.message))
   }
 }
